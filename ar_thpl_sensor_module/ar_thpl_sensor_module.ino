@@ -97,18 +97,16 @@ void readTSL2561(struct SensorData *sd)
 
 void writeAllSensorDataToSerial(void)
 {
-    Serial.print("temp_f:");
-    Serial.print(sd.tempF);
-    Serial.print("|");
-    Serial.print("temp_c:");
-    Serial.print(sd.tempC);
-    Serial.print("|");
-    Serial.print("humidity:");
-    Serial.print(sd.humidity);
-    Serial.print("|");
-    Serial.print("pressure:");
-    Serial.print(sd.pressure);
-    Serial.print("|");
-    Serial.print("luminosity:");
-    Serial.println(sd.luminosity);
+    String jsonString = "{\"temp_f\":";
+    jsonString += sd.tempF;
+    jsonString += ",\"temp_c\":";
+    jsonString += sd.tempC;
+    jsonString += ",\"humidity\":";
+    jsonString += sd.humidity;
+    jsonString += ",\"pressure\":";
+    jsonString += sd.pressure;
+    jsonString += ",\"luminosity\":";
+    jsonString += sd.luminosity;
+    jsonString += "}";
+    Serial.println(jsonString);
 }
